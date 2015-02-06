@@ -95,8 +95,6 @@
 		text-align: center;
 
 		.control{
-			background-color: #ABCDEF;
-			color: #FFF;
 			border: medium none;
 			box-shadow: none;
 			font-size: 14px;
@@ -105,10 +103,6 @@
 			padding: 10px 20px;
 			margin: 0 auto;
 			cursor: pointer;	
-
-			&:hover, &:focus{
-				background-color: darken(#ABCDEF, 10%);
-			}
 		}
 	}
 }
