@@ -23,7 +23,7 @@ gulp.task('coffee', function() {
 gulp.task('webserver', function() {
   gulp.src('.')
     .pipe($.webserver({
-      livereload: true,
+      livereload: false,
       directoryListing: false,
       open: true
     }));
