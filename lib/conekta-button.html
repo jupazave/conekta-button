@@ -1,0 +1,54 @@
+<div class="c-modal">
+	<div class="c-modal-dialog">
+		<div class="c-modal-content ">
+			<div class="c-modal-header">
+				<h1>Pagar</h1>
+			</div>
+			<form>
+				<div class="c-modal-body">
+					<div class="card">
+						<div class="line">
+							<div class="tag">Total: $ #{total}</div>
+							<div class="brand-cards">
+								<div class="logo-visa"></div>
+								<div class="logo-mastercard"></div>
+								<div class="logo-amex"></div>
+							</div>
+						</div>
+						<div class="line">
+							<div class="group number">
+								<label>Numero de la Tarjeta</label>
+								<input type="text" class="control" data-conekta-card-number placeholder="**** **** **** ****"/>
+							</div>
+
+							<div class="group date">
+								<label>Fecha de Expiracion</label>
+								<input type="text" class="control" data-conekta-card-date placeholder="MM / YY"/>
+							</div>
+						</div>
+
+						<div class="line">
+							<div class="group name">
+								<label>Nombre en la Tarjeta</label>
+								<input type="text" class="control" data-conekta-card-name placeholder="John Appleseed"/>
+							</div>
+
+							<div class="group cvc">
+								<label>CVC</label>
+								<input type="text" class="control" data-conekta-card-cvc placeholder="cvc"/>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="c-modal-footer">
+					<div class="actions">
+						<button type="button" class="control" id="cancel" data-conekta-card-submit>Cancelar</button>
+						<button type="button" class="control" id="paynow" data-conekta-card-submit>Pagar ahora</button>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</div>
