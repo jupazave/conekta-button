@@ -15,8 +15,7 @@ window.ConektaButton  = ->
             document.querySelector ".c-modal"
 
         removeModal : ->
-            #do some animations
-            # obj = $(".c-modal")
+            #To-Do: animations
             document.body.removeChild( _helpers.getModal() )
             return
 
@@ -82,6 +81,7 @@ window.ConektaButton  = ->
             wrapHtml.setAttribute("class", "c-modal")
             wrapHtml.innerHTML = _form
             document.body.appendChild wrapHtml
+            # To-Do: Animate
             return
 
 
@@ -123,11 +123,10 @@ window.ConektaButton  = ->
 
         _helpers.openModal params
 
-        cc_number = $("[data-conekta-card-number]")
-        cc_date = $("[data-conekta-card-date]")
-        cc_cvc = $("[data-conekta-card-cvc]")
+        cc_number = document.querySelector("[data-conekta-card-number]")
+        cc_date = document.querySelector("[data-conekta-card-date]")
+        cc_cvc = document.querySelector("[data-conekta-card-cvc]")
 
-        ###
         formatted = new Formatter cc_number, {
             'pattern': '{{9999}} {{9999}} {{9999}} {{9999}}',
             'persistent': false
@@ -142,44 +141,54 @@ window.ConektaButton  = ->
             'pattern': '{{9999}}',
             'persistent': false
             }
-        ###
 
         cancelButton = (e) ->
             _helpers.removeModal()
 
         makePayment = (e) ->
             e.preventDefault()
+            has_error= false
+            card = {}
+            name = document.querySelector("[data-conekta-card-name]").value
 
-            date = $("[data-conekta-card-date]").val().split(" / ")
-
-            month = date[0]
-            year = date[1]
-            card =
-                number    : $("[data-conekta-card-number]").val()
-                exp_year  : year
-                exp_month : month
-                cvc       : $("[data-conekta-card-cvc]").val()
-                name      : $("[data-conekta-card-name]").val()
-
-
-            unless Conekta.card.validateNumber(card.number) 
+            unless name
                 has_error = true
             else
-                #do something
-                #document.querySelector("[data-conekta-card-number]")
+                card.name = name
+            
 
-            unless Conekta.card.validateExpirationDate(card.exp_month, card.exp_year)
+            date = document.querySelector("[data-conekta-card-date]").value
+
+            unless date
+                has_error = trueconsole.log "The date is invalid: ", date
+
+            else
+                date = date.split(" / ")
+                month = date[0]
+                year = date[1]
+
+                unless Conekta.card.validateExpirationDate(month, year)
+                    has_error = trueconsole.log "The date is invalid. Month", month, ", Year: ", year
+
+                else
+                    card.exp_year = year
+                    card.exp_month = month
+
+            number = document.querySelector("[data-conekta-card-number]").value
+
+            unless Conekta.card.validateNumber(number) 
                 has_error = true
             else
-                #do something 
-                #document.querySelector("[data-conekta-card-date]")
+                card.number = number
 
 
-            unless Conekta.card.validateCVC(card.cvc)
+            cvc = document.querySelector("[data-conekta-card-cvc]").value
+
+            unless Conekta.card.validateCVC(cvc)
                 has_error = true
             else
-                #do something 
-                #document.querySelector("[data-conekta-card-cvc]")
+                card.cvc = cvc
+
 
             unless has_error
 
@@ -191,16 +200,16 @@ window.ConektaButton  = ->
                 
                 success = (charge) ->
                     _helpers.removeModal()
-                    alert "charge"
+                    alert "Cargo Realizado"
 
                 error = (response) ->
-                    alert "error"
-                    #display error
+                    alert "Error al realizar el cargo"
+                    #To-Do: display error
 
                 Conekta.charge.create charge, success, error
 
             else 
-                # Animate
+                # To-Do: Animate
                 return
 
 
