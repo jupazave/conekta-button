@@ -9,47 +9,70 @@ window.ConektaButton  = ->
             for key in b 
               if b.hasOwnProperty key 
                 a[key] = b[key]
-            return a
+            a
 
         getModal : ->
-            return document.querySelector ".conekta-modal"
+            document.querySelector ".c-modal"
 
         removeModal : ->
-
-            obj = document.getElementByClass("c-modal")
-            document.body.removeChild(obj)
-
-            return true
+            #do some animations
+            # obj = $(".c-modal")
+            document.body.removeChild( _helpers.getModal() )
+            return
 
         openModal : (params) ->
             _form = """
                 <div class="c-modal">
                     <div class="c-modal-dialog">
-
-                        <div class="c-modal-content">
-                            <h2>#{params.name}</h2>
-                            <p>#{params.description}</p>
-                            <div class="card">
-                                <form>
-
-                                    <div class="name input">
-                                        <input type="text" class="control" data-conekta-card-name placeholder="name"/>
-                                    </div>
-
-                                    <div class="number input">
-                                        <input type="text" class="control" data-conekta-card-number placeholder="number"/>
-                                    </div>
-
-                                    <div class="date cvc input">
-                                        <input type="text" class="control" data-conekta-card-date placeholder="MM / YY"/>
-                                        <input type="text" class="control" data-conekta-card-cvc placeholder="cvc"/>
-                                    </div>
-
-                                    <div class="actions">
-                                        <button type="button" class="control" data-conekta-card-submit>Pagar $ #{params.total}</button>
-                                    </div>
-                                </form>
+                        <div class="c-modal-content ">
+                            <div class="c-modal-header">
+                                <h1>Pagar</h1>
                             </div>
+                            <form>
+                                <div class="c-modal-body">
+                                    <div class="card">
+                                        <div class="info">
+                                            <div class="tag">Total: $ #{params.total}</div>
+                                            <div class="brand-cards">
+                                                <div class="logo-visa"></div>
+                                                <div class="logo-mastercard"></div>
+                                                <div class="logo-amex"></div>
+                                            </div>
+                                        </div>
+                                        <div class="line">
+                                            <div class="group number">
+                                                <label>Numero de la Tarjeta</label>
+                                                <input type="text" class="control" data-conekta-card-number placeholder="**** **** **** ****"/>
+                                            </div>
+
+                                            <div class="group date">
+                                                <label>Fecha de Expiracion</label>
+                                                <input type="text" class="control" data-conekta-card-date placeholder="MM / YY"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="line">
+                                            <div class="group name">
+                                                <label>Nombre en la Tarjeta</label>
+                                                <input type="text" class="control" data-conekta-card-name placeholder="John Appleseed"/>
+                                            </div>
+
+                                            <div class="group cvc">
+                                                <label>CVC</label>
+                                                <input type="text" class="control" data-conekta-card-cvc placeholder="cvc"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="c-modal-footer">
+                                    <div class="actions">
+                                        <button type="button" class="control" id="cancel" data-conekta-card-cancel>Cancelar</button>
+                                        <button type="button" class="control" id="paynow" data-conekta-card-submit>Pagar ahora</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -59,7 +82,20 @@ window.ConektaButton  = ->
             wrapHtml.setAttribute("class", "c-modal")
             wrapHtml.innerHTML = _form
             document.body.appendChild wrapHtml
-            return true
+            return
+
+
+    window.document.onkeydown = (e) -> 
+        if !e 
+            e = event   
+        
+        if e.keyCode == 27
+            _helpers.removeModal()
+            window.document.onkeydown = (e) ->
+                if !e 
+                    e = event 
+                e
+        return
 
 
     if arguments[0] == null
@@ -87,10 +123,11 @@ window.ConektaButton  = ->
 
         _helpers.openModal params
 
-        cc_number = document.querySelector("[data-conekta-card-number]")
-        cc_date = document.querySelector("[data-conekta-card-date]")
-        cc_cvc = document.querySelector("[data-conekta-card-cvc]")
+        cc_number = $("[data-conekta-card-number]")
+        cc_date = $("[data-conekta-card-date]")
+        cc_cvc = $("[data-conekta-card-cvc]")
 
+        ###
         formatted = new Formatter cc_number, {
             'pattern': '{{9999}} {{9999}} {{9999}} {{9999}}',
             'persistent': false
@@ -105,6 +142,7 @@ window.ConektaButton  = ->
             'pattern': '{{9999}}',
             'persistent': false
             }
+        ###
 
         cancelButton = (e) ->
             _helpers.removeModal()
@@ -112,16 +150,16 @@ window.ConektaButton  = ->
         makePayment = (e) ->
             e.preventDefault()
 
-            date = document.querySelector("[data-conekta-card-date]").value.split(" / ")
+            date = $("[data-conekta-card-date]").val().split(" / ")
 
             month = date[0]
             year = date[1]
             card =
-                number    : document.querySelector("[data-conekta-card-number]").value
+                number    : $("[data-conekta-card-number]").val()
                 exp_year  : year
                 exp_month : month
-                cvc       : document.querySelector("[data-conekta-card-cvc]").value
-                name      : document.querySelector("[data-conekta-card-name]").value
+                cvc       : $("[data-conekta-card-cvc]").val()
+                name      : $("[data-conekta-card-name]").val()
 
 
             unless Conekta.card.validateNumber(card.number) 
@@ -157,14 +195,17 @@ window.ConektaButton  = ->
 
                 error = (response) ->
                     alert "error"
+                    #display error
 
                 Conekta.charge.create charge, success, error
 
             else 
+                # Animate
                 return
 
 
         document.querySelector("[data-conekta-card-submit]").addEventListener "click", makePayment, false
+        document.querySelector("[data-conekta-card-cancel]").addEventListener "click", cancelButton, false
 
 
         return this
