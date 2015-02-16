@@ -174,7 +174,7 @@ window.ConektaButton  = ->
                 year = date[1]
 
                 unless Conekta.card.validateExpirationDate(month, year)
-                    has_error = trueconsole.log "The date is invalid. Month", month, ", Year: ", year
+                    has_error = true
 
                 else
                     card.exp_year = year
