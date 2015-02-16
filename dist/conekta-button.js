@@ -64,7 +64,7 @@ window.ConektaButton = function() {
     }
     params.amount = arguments[0].amount;
     params.name = arguments[0].name;
-    params.total = params.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    params.total = ((params.amount.toFixed().substring(params.amount.toFixed().length - 2, 0)) + "." + (params.amount.toFixed().substring(params.amount.toFixed().length - 2))).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     params.description = arguments[0].description || defaultParams.description;
     _helpers.openModal(params);
     cc_number = document.querySelector("[data-conekta-card-number]");
