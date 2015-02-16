@@ -166,7 +166,7 @@ window.ConektaButton  = ->
             date = document.querySelector("[data-conekta-card-date]").value
 
             unless date
-                has_error = trueconsole.log "The date is invalid: ", date
+                has_error = true
 
             else
                 date = date.split(" / ")
