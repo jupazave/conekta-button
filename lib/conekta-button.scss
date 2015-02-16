@@ -1,242 +1,207 @@
-
-$modal_name : "c-modal";
-$font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$font-family : "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$modal_name  : "c-modal";
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
-.#{$modal_name} * { 
-	box-sizing: border-box;
+.#{$modal_name} * {
+	box-sizing : border-box;
 }
 
-.#{$modal_name}{
-	display: block;
-	font-size: 62.5%; 
-	
-	overflow-x: auto;
-	overflow-y: scroll;
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	z-index: 1050;
+.#{$modal_name} {
+	background  : rgba(0, 0, 0, 0.4);
+	bottom      : 0px;
+	display     : block;
+	font-family : $font-family;
+	font-size   : 62.5%;
+	left        : 0px;
+	opacity     : 1;
+	outline     : 0px none;
+	overflow-x  : auto;
+	overflow-y  : scroll;
+	padding     : 0 25px;
+	position    : fixed;
+	right       : 0px;
+	top         : 0px;
+	z-index     : 1050;
 
-	padding-right: 25px;
-	padding-left: 25px;
-	outline: 0px none;
-	opacity: 1;
-	background: rgba(0,0,0,0.4);
-	font-family: $font-family;
+	.#{$modal_name}-dialog {
+		background    : #FFFFFF;
+		border-radius : 4px;
+		box-shadow    : 0px 5px 15px rgba(0, 0, 0, 0.5);
+		margin        : 104px auto 5%;
+		position      : relative;
+		width         : 413px;
 
-	.#{$modal_name}-dialog{
-		position: relative;
-		width: 413px;
-		margin: 5% auto;
-		margin-top: 104px;
-		background: #FFFFFF;
-		border-radius: 4px;
-		box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+		.#{$modal_name}-content {
+			.#{$modal_name}-header {
+				margin      : 0 26px;
+				padding-top : 22px;
 
-		.#{$modal_name}-content{
-
-			.#{$modal_name}-header{
-				margin: 0 26px;
-				padding-top: 22px;
-
-				h1{
-					margin: 0;
-					font-size: 27px;
-					letter-spacing: .01em;
-
+				h1 {
+					font-size      : 27px;
+					letter-spacing : .01em;
+					margin         : 0;
 				}
 			}
 
-			.#{$modal_name}-body{
-				margin: 0 26px;
+			.#{$modal_name}-body {
+				margin : 0 26px;
 			}
 
-			.#{$modal_name}-footer{
-				padding: 20px 26px 13px;
-				border-bottom-right-radius: 4px;
-				border-bottom-left-radius: 4px;
-				
-				background-color: #F9FAFB;
-				border-top: 1px solid #EEEEEE;
+			.#{$modal_name}-footer {
+				background-color : #F9FAFB;
+				border-radius    : 0 0 4px 4px;
+				border-top       : 1px solid #EEEEEE;
+				padding          : 20px 26px 13px;
 
+				button {
+					border         : none;
+					border-radius  : 6px;
+					box-shadow     : none;
+					color          : white;
+					display        : inline-block;
+					font-family    : $font-family;
+					font-weight    : bold;
+					letter-spacing : 1px;
+					margin-bottom  : 1em;
+					padding        : 1em;
+					text-align     : center;
+					text-transform : uppercase;
+					transition     : all 0.15s ease-out 0s;
 
-				button{
-					font-family: $font-family;
+					&#paynow {
+						background-color : #6D48CC;
+						float            : right;
 
-					display: inline-block;
-					transition: all 0.15s ease-out 0s;
-					border-radius: 6px;
-					color: white;
-					font-weight: bold;
-					letter-spacing: 1px;
-					margin-bottom: 1em;
-					padding: 1em;
-					text-align: center;
-					border: none;
-					box-shadow: none;
-					text-transform: uppercase;
-
-					&#paynow{
-						background-color: #6D48CC;
-						&:hover{
-							background-color: darken(#6D48CC, 10%);
+						&:hover {
+							background-color : darken(#6D48CC, 10%);
 						}
-						float: right;
 					}
 
-					&#cancel{
-						background-color: #859093;
-						&:hover{
-							background-color: darken(#859093, 10%);
+					&#cancel {
+						background-color : #859093;
+
+						&:hover {
+							background-color : darken(#859093, 10%);
 						}
 					}
 				}
 			}
-
-
-
-
-
 		}
 	}
 }
 
-.#{$modal_name}-body .card{
-	background: #F9FAFB;
-	border: solid 2px #E2E6E9;
-	padding: 15px;
-	border-radius: 4px;
-	margin-top: 14px;
-	margin-bottom: 35px;
-	.info{
-		position: relative;
-		padding-bottom: 20px;
+.#{$modal_name}-body .card {
+	background    : #F9FAFB;
+	border        : 2px solid #E2E6E9;
+	border-radius : 4px;
+	margin        : 14px 0 35px;
+	padding       : 15px;
 
-		.tag{
-			font-size: 14px;
-			color: #FFF;
-			border-radius: 10px;
-			background-color: #838991;
-			display:inline-block;
-			padding-top: 3px;
-			padding-bottom: 3px;
-			padding-left: 6px;
-			padding-right: 6px;
+	.info {
+		padding-bottom : 20px;
+		position       : relative;
 
+		.tag {
+			background-color : #838991;
+			border-radius    : 10px;
+			color            : #FFF;
+			display          : inline-block;
+			font-size        : 14px;
+			padding          : 3px 6px;
 		}
 
 		.brand-cards {
-			float: right;
-			display:inline-block;
-			margin-bottom: 15px;
-			margin-top: 5px;
+			display : inline-block;
+			float   : right;
+			margin  : 5px 0 15px;
 
-			> div{
-				display: inline-block;
-				padding-right: 5px;
-				padding-left: 5px;
+			> div {
+				display : inline-block;
+				padding : 0 5px;
 			}
 		}
-
 	}
 
-	
+	.group {
+		display    : inline-block;
+		min-height : 1px;
+		position   : relative;
 
-
-	.group{
-		display: inline-block;
-		position: relative;
-		min-height: 1px;
-
-		&.number{
-			width: 188px;
-			margin-right: 4.5px;
+		&.number {
+			margin-right : 4.5px;
+			width        : 188px;
 		}
 
-		&.date{
-			width: 127px;
-			margin-left: 4.5px;
+		&.date {
+			margin-left : 4.5px;
+			width       : 127px;
 		}
 
-		&.name{
-			width: 240px;
-			margin-right: 4.5px;
+		&.name {
+			margin-right : 4.5px;
+			width        : 240px;
 
 		}
 
-		&.cvc{
-			width: 75px;
-			margin-left: 4.5px;
+		&.cvc {
+			margin-left : 4.5px;
+			width       : 75px;
 		}
 
-		label{
-			font-size: 12px;
-			color: #838991;
+		label {
+			color     : #838991;
+			font-size : 12px;
 		}
 
-		input{
-			margin-top: 10px;
-			margin-bottom: 15px;
-			height:38px;
-			padding-top: 8px;
-			padding-bottom: 8px;
-			padding-left: 12px;
-			font-size: 14px;
-			font-family: $font-family;
-			width: 100%;
-			color: darken(#fff, 85%);
+		input {
+			border        : 1px solid #DADFE2;
+			border-radius : 4px;
+			color         : darken(#fff, 85%);
+			font-family   : $font-family;
+			font-size     : 14px;
+			height        : 38px;
+			margin        : 10px 0 15px;
+			padding       : 8px 0 8px 12px;
+			width         : 100%;
 
-			border: solid 1px  #DADFE2;
-			border-radius: 4px;
-
-			&::focus{
-				border: solid 1px  #DADFE2;
-				outline: 0;
-
+			&::focus {
+				border  : 1px solid #DADFE2;
+				outline : 0;
 			}
 
 			&::-webkit-input-placeholder {
-			    color:    #939C9F;
+				color : #939C9F;
 			}
 
 			&::-moz-placeholder {
-			    color:    #939C9F;
-			}
-
-			&::-moz-placeholder {
-			    color:    #939C9F;
+				color : #939C9F;
 			}
 
 			&:-ms-input-placeholder {
-			    color:    #939C9F;
+				color : #939C9F;
 			}
 		}
 	}
-
-
 }
 
 .logo-visa {
-	width: 46px;
-	height: 14px;
-	background-size: 46px 14px;
-	background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg);
+	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg);
+	background-size  : 46px 14px;
+	height           : 14px;
+	width            : 46px;
 }
 
 .logo-mastercard {
-	width: 36px;
-	height: 21px;
-	background-size: 36px 21px;
-	background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg);
+	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg);
+	background-size  : 36px 21px;
+	height           : 21px;
+	width            : 36px;
 }
 
 .logo-amex {
-	width: 21px;
-	height: 21px;
-	background-size: 21px 21px;
-	background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg);
+	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg);
+	background-size  : 21px 21px;
+	height           : 21px;
+	width            : 21px;
 }
