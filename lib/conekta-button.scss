@@ -4,204 +4,204 @@ $modal_name  : "c-modal";
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 .#{$modal_name} * {
-	box-sizing : border-box;
+  box-sizing : border-box;
 }
 
 .#{$modal_name} {
-	background  : rgba(0, 0, 0, 0.4);
-	bottom      : 0px;
-	display     : block;
-	font-family : $font-family;
-	font-size   : 62.5%;
-	left        : 0px;
-	opacity     : 1;
-	outline     : 0px none;
-	overflow-x  : auto;
-	overflow-y  : scroll;
-	padding     : 0 25px;
-	position    : fixed;
-	right       : 0px;
-	top         : 0px;
-	z-index     : 1050;
+  background  : rgba(0, 0, 0, 0.4);
+  bottom      : 0px;
+  display     : block;
+  font-family : $font-family;
+  font-size   : 62.5%;
+  left        : 0px;
+  opacity     : 1;
+  outline     : 0px none;
+  overflow-x  : auto;
+  overflow-y  : scroll;
+  padding     : 0 25px;
+  position    : fixed;
+  right       : 0px;
+  top         : 0px;
+  z-index     : 1050;
 
-	.#{$modal_name}-dialog {
-		background    : #FFFFFF;
-		border-radius : 4px;
-		box-shadow    : 0px 5px 15px rgba(0, 0, 0, 0.5);
-		margin        : 104px auto 5%;
-		position      : relative;
-		width         : 413px;
+  .#{$modal_name}-dialog {
+    background    : #FFFFFF;
+    border-radius : 4px;
+    box-shadow    : 0px 5px 15px rgba(0, 0, 0, 0.5);
+    margin        : 104px auto 5%;
+    position      : relative;
+    width         : 413px;
 
-		.#{$modal_name}-content {
-			.#{$modal_name}-header {
-				margin      : 0 26px;
-				padding-top : 22px;
+    .#{$modal_name}-content {
+      .#{$modal_name}-header {
+        margin      : 0 26px;
+        padding-top : 22px;
 
-				h1 {
-					font-size      : 27px;
-					letter-spacing : .01em;
-					margin         : 0;
-				}
-			}
+        h1 {
+          font-size      : 27px;
+          letter-spacing : .01em;
+          margin         : 0;
+        }
+      }
 
-			.#{$modal_name}-body {
-				margin : 0 26px;
-			}
+      .#{$modal_name}-body {
+        margin : 0 26px;
+      }
 
-			.#{$modal_name}-footer {
-				background-color : #F9FAFB;
-				border-radius    : 0 0 4px 4px;
-				border-top       : 1px solid #EEEEEE;
-				padding          : 20px 26px 13px;
+      .#{$modal_name}-footer {
+        background-color : #F9FAFB;
+        border-radius    : 0 0 4px 4px;
+        border-top       : 1px solid #EEEEEE;
+        padding          : 20px 26px 13px;
 
-				button {
-					border         : none;
-					border-radius  : 6px;
-					box-shadow     : none;
-					color          : white;
-					display        : inline-block;
-					font-family    : $font-family;
-					font-weight    : bold;
-					letter-spacing : 1px;
-					margin-bottom  : 1em;
-					padding        : 1em;
-					text-align     : center;
-					text-transform : uppercase;
-					transition     : all 0.15s ease-out 0s;
+        button {
+          border         : none;
+          border-radius  : 6px;
+          box-shadow     : none;
+          color          : white;
+          display        : inline-block;
+          font-family    : $font-family;
+          font-weight    : bold;
+          letter-spacing : 1px;
+          margin-bottom  : 1em;
+          padding        : 1em;
+          text-align     : center;
+          text-transform : uppercase;
+          transition     : all 0.15s ease-out 0s;
 
-					&#paynow {
-						background-color : #6D48CC;
-						float            : right;
+          &#paynow {
+            background-color : #6D48CC;
+            float            : right;
 
-						&:hover {
-							background-color : darken(#6D48CC, 10%);
-						}
-					}
+            &:hover {
+              background-color : darken(#6D48CC, 10%);
+            }
+          }
 
-					&#cancel {
-						background-color : #859093;
+          &#cancel {
+            background-color : #859093;
 
-						&:hover {
-							background-color : darken(#859093, 10%);
-						}
-					}
-				}
-			}
-		}
-	}
+            &:hover {
+              background-color : darken(#859093, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .#{$modal_name}-body .card {
-	background    : #F9FAFB;
-	border        : 2px solid #E2E6E9;
-	border-radius : 4px;
-	margin        : 14px 0 35px;
-	padding       : 15px;
+  background    : #F9FAFB;
+  border        : 2px solid #E2E6E9;
+  border-radius : 4px;
+  margin        : 14px 0 35px;
+  padding       : 15px;
 
-	.info {
-		padding-bottom : 20px;
-		position       : relative;
+  .info {
+    padding-bottom : 20px;
+    position       : relative;
 
-		.tag {
-			background-color : #838991;
-			border-radius    : 10px;
-			color            : #FFF;
-			display          : inline-block;
-			font-size        : 14px;
-			padding          : 3px 6px;
-		}
+    .tag {
+      background-color : #838991;
+      border-radius    : 10px;
+      color            : #FFF;
+      display          : inline-block;
+      font-size        : 14px;
+      padding          : 3px 6px;
+    }
 
-		.brand-cards {
-			display : inline-block;
-			float   : right;
-			margin  : 5px 0 15px;
+    .brand-cards {
+      display : inline-block;
+      float   : right;
+      margin  : 5px 0 15px;
 
-			> div {
-				display : inline-block;
-				padding : 0 5px;
-			}
-		}
-	}
+      > div {
+        display : inline-block;
+        padding : 0 5px;
+      }
+    }
+  }
 
-	.group {
-		display    : inline-block;
-		min-height : 1px;
-		position   : relative;
+  .group {
+    display    : inline-block;
+    min-height : 1px;
+    position   : relative;
 
-		&.number {
-			margin-right : 4.5px;
-			width        : 188px;
-		}
+    &.number {
+      margin-right : 4.5px;
+      width        : 188px;
+    }
 
-		&.date {
-			margin-left : 4.5px;
-			width       : 127px;
-		}
+    &.date {
+      margin-left : 4.5px;
+      width       : 127px;
+    }
 
-		&.name {
-			margin-right : 4.5px;
-			width        : 240px;
+    &.name {
+      margin-right : 4.5px;
+      width        : 240px;
 
-		}
+    }
 
-		&.cvc {
-			margin-left : 4.5px;
-			width       : 75px;
-		}
+    &.cvc {
+      margin-left : 4.5px;
+      width       : 75px;
+    }
 
-		label {
-			color     : #838991;
-			font-size : 12px;
-		}
+    label {
+      color     : #838991;
+      font-size : 12px;
+    }
 
-		input {
-			border        : 1px solid #DADFE2;
-			border-radius : 4px;
-			color         : darken(#fff, 85%);
-			font-family   : $font-family;
-			font-size     : 14px;
-			height        : 38px;
-			margin        : 10px 0 15px;
-			padding       : 8px 0 8px 12px;
-			width         : 100%;
+    input {
+      border        : 1px solid #DADFE2;
+      border-radius : 4px;
+      color         : darken(#fff, 85%);
+      font-family   : $font-family;
+      font-size     : 14px;
+      height        : 38px;
+      margin        : 10px 0 15px;
+      padding       : 8px 0 8px 12px;
+      width         : 100%;
 
-			&::focus {
-				border  : 1px solid #DADFE2;
-				outline : 0;
-			}
+      &::focus {
+        border  : 1px solid #DADFE2;
+        outline : 0;
+      }
 
-			&::-webkit-input-placeholder {
-				color : #939C9F;
-			}
+      &::-webkit-input-placeholder {
+        color : #939C9F;
+      }
 
-			&::-moz-placeholder {
-				color : #939C9F;
-			}
+      &::-moz-placeholder {
+        color : #939C9F;
+      }
 
-			&:-ms-input-placeholder {
-				color : #939C9F;
-			}
-		}
-	}
+      &:-ms-input-placeholder {
+        color : #939C9F;
+      }
+    }
+  }
 }
 
 .logo-visa {
-	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg);
-	background-size  : 46px 14px;
-	height           : 14px;
-	width            : 46px;
+  background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg);
+  background-size  : 46px 14px;
+  height           : 14px;
+  width            : 46px;
 }
 
 .logo-mastercard {
-	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg);
-	background-size  : 36px 21px;
-	height           : 21px;
-	width            : 36px;
+  background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg);
+  background-size  : 36px 21px;
+  height           : 21px;
+  width            : 36px;
 }
 
 .logo-amex {
-	background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg);
-	background-size  : 21px 21px;
-	height           : 21px;
-	width            : 21px;
+  background-image : url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg);
+  background-size  : 21px 21px;
+  height           : 21px;
+  width            : 21px;
 }
