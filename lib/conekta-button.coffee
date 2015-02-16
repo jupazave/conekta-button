@@ -19,6 +19,12 @@ window.ConektaButton  = ->
             document.body.removeChild( _helpers.getModal() )
             return
 
+        numToStr: (amount)->
+            num = amount.toFixed().substring(amount.toFixed().length-2, 0)
+            dec = amount.toFixed().substring(amount.toFixed().length-2)
+            amount = "#{num}.#{dec}".replace(/\d(?=(\d{3})+\.)/g, '$&,')
+            return amount 
+
         openModal : (params) ->
             _form = """
                 <div class="c-modal">
@@ -118,7 +124,7 @@ window.ConektaButton  = ->
 
         params.amount = arguments[0].amount
         params.name = arguments[0].name
-        params.total = "#{params.amount.toFixed().substring(params.amount.toFixed().length-2, 0)}.#{params.amount.toFixed().substring(params.amount.toFixed().length-2)}".replace(/\d(?=(\d{3})+\.)/g, '$&,')
+        params.total = _helpers.numToStr params.amount
         params.description = arguments[0].description || defaultParams.description
 
         _helpers.openModal params
