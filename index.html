@@ -1,34 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Conekta-button by jupazave</title>
+    <meta name="description" content="Conekta-button : An easy way to integrate Conekta Checkout, without a lot of work. It takes care of building forms, validating input, and securing your customers&#39; card data.">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>Conekta-button</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header class="without-description">
-        <h1>Conekta-button</h1>
-        <p></p>
-        <p class="view"><a href="https://github.com/jupazave/conekta-button">View the Project on GitHub <small>jupazave/conekta-button</small></a></p>
-        <ul>
-          <li><a href="https://github.com/jupazave/conekta-button/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/jupazave/conekta-button/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/jupazave/conekta-button">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h4>
-<a id="an-easy-way-to-integrate-conekta-checkout-without-a-lot-of-work-it-takes-care-of-building-forms-validating-input-and-securing-your-customers-card-data" class="anchor" href="#an-easy-way-to-integrate-conekta-checkout-without-a-lot-of-work-it-takes-care-of-building-forms-validating-input-and-securing-your-customers-card-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>An easy way to integrate Conekta Checkout, without a lot of work. It takes care of building forms, validating input, and securing your customers' card data.</h4>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jupazave/conekta-button">View on GitHub</a>
+
+          <h1 id="project_title">Conekta-button</h1>
+          <h2 id="project_tagline">An easy way to integrate Conekta Checkout, without a lot of work. It takes care of building forms, validating input, and securing your customers&#39; card data.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jupazave/conekta-button/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jupazave/conekta-button/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="how-to" class="anchor" href="#how-to" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To</h2>
+
+<p>To integrate:</p>
+
+<ul>
+<li><p>Import the <a href="https://www.conekta.io/es/docs/referencias/conekta-js">conekta.js</a> <a href="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js">v0.3.2</a></p></li>
+<li>
+<p>Set your Conekta Public Key</p>
+
+<pre><code>Conekta.setPublishableKey("key_XXXXXXXXXXXXXXX");
+</code></pre>
+</li>
+<li>
+<p>Call the plugin</p>
+
+<pre><code>ConektaButton({
+    amount: 2000, //Amount must be in MXN cents
+    name: "Payment Name",
+    description: "Payment Description"
+});
+</code></pre>
+</li>
+</ul>
+
+<p>Example</p>
+
+<pre><code>Conekta.setPublishableKey("key_E9Q2zxKmsKsNyZy9");
+$("#conektaButton").click(function () {
+    ConektaButton({
+        amount: 2000,
+        name: "Payment Name",
+        description: "Payment Description"
+    });
+});
+</code></pre>
+
+<p>See an example here: <a href="http://jupazave.github.io/conekta-button/example/index.html">http://jupazave.github.io/conekta-button/example/index.html</a></p>
+
+<h2>
+<a id="to-do" class="anchor" href="#to-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>To Do</h2>
+
+<ul>
+<li>[ ] On succes param</li>
+<li>[ ] On click default listener</li>
+<li>[ ] Disable default button</li>
+<li>[ ] Disable payment button after click</li>
+<li>[ ] Show using card brand</li>
+</ul>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
@@ -36,11 +87,26 @@
 <p><a href="https://github.com/jupazave" class="user-mention">@jupazave</a></p>
       </section>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/jupazave">jupazave</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Conekta-button maintained by <a href="https://github.com/jupazave">jupazave</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46840731-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
   </body>
 </html>
