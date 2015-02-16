@@ -22,6 +22,13 @@ window.ConektaButton = function() {
     removeModal: function() {
       document.body.removeChild(_helpers.getModal());
     },
+    numToStr: function(amount) {
+      var dec, num;
+      num = amount.toFixed().substring(amount.toFixed().length - 2, 0);
+      dec = amount.toFixed().substring(amount.toFixed().length - 2);
+      amount = (num + "." + dec).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      return amount;
+    },
     openModal: function(params) {
       var wrapHtml, _form;
       _form = "<div class=\"c-modal\">\n    <div class=\"c-modal-dialog\">\n        <div class=\"c-modal-content \">\n            <div class=\"c-modal-header\">\n                <h1>Pagar</h1>\n            </div>\n            <form>\n                <div class=\"c-modal-body\">\n                    <div class=\"card\">\n                        <div class=\"info\">\n                            <div class=\"tag\">Total: $ " + params.total + "</div>\n                            <div class=\"brand-cards\">\n                                <div class=\"logo-visa\"></div>\n                                <div class=\"logo-mastercard\"></div>\n                                <div class=\"logo-amex\"></div>\n                            </div>\n                        </div>\n                        <div class=\"line\">\n                            <div class=\"group number\">\n                                <label>Numero de la Tarjeta</label>\n                                <input type=\"text\" class=\"control\" data-conekta-card-number placeholder=\"**** **** **** ****\"/>\n                            </div>\n\n                            <div class=\"group date\">\n                                <label>Fecha de Expiracion</label>\n                                <input type=\"text\" class=\"control\" data-conekta-card-date placeholder=\"MM / YY\"/>\n                            </div>\n                        </div>\n\n                        <div class=\"line\">\n                            <div class=\"group name\">\n                                <label>Nombre en la Tarjeta</label>\n                                <input type=\"text\" class=\"control\" data-conekta-card-name placeholder=\"John Appleseed\"/>\n                            </div>\n\n                            <div class=\"group cvc\">\n                                <label>CVC</label>\n                                <input type=\"text\" class=\"control\" data-conekta-card-cvc placeholder=\"cvc\"/>\n                            </div>\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"c-modal-footer\">\n                    <div class=\"actions\">\n                        <button type=\"button\" class=\"control\" id=\"cancel\" data-conekta-card-cancel>Cancelar</button>\n                        <button type=\"button\" class=\"control\" id=\"paynow\" data-conekta-card-submit>Pagar ahora</button>\n                    </div>\n                </div>\n            </form>\n            \n        </div>\n    </div>\n</div>";
@@ -64,7 +71,7 @@ window.ConektaButton = function() {
     }
     params.amount = arguments[0].amount;
     params.name = arguments[0].name;
-    params.total = ((params.amount.toFixed().substring(params.amount.toFixed().length - 2, 0)) + "." + (params.amount.toFixed().substring(params.amount.toFixed().length - 2))).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    params.total = _helpers.numToStr(params.amount);
     params.description = arguments[0].description || defaultParams.description;
     _helpers.openModal(params);
     cc_number = document.querySelector("[data-conekta-card-number]");
@@ -98,13 +105,13 @@ window.ConektaButton = function() {
       }
       date = document.querySelector("[data-conekta-card-date]").value;
       if (!date) {
-        has_error = trueconsole.log("The date is invalid: ", date);
+        has_error = true;
       } else {
         date = date.split(" / ");
         month = date[0];
         year = date[1];
         if (!Conekta.card.validateExpirationDate(month, year)) {
-          has_error = trueconsole.log("The date is invalid. Month", month, ", Year: ", year);
+          has_error = true;
         } else {
           card.exp_year = year;
           card.exp_month = month;
