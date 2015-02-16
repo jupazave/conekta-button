@@ -1,0 +1,33 @@
+{
+  "name": "conekta-button",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jupazave/conekta_button",
+  "authors": [
+    "Juan Pablo Zamora <jupazave@gmail.com>"
+  ],
+  "description": "An easy way to integrate Conekta Checkout, without a lot of work. It takes care of building forms, validating input, and securing your customers' card data.",
+  "main": "lib/conekta-button.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "conekta",
+    "conekta button",
+    "checkout conekta",
+    "pagos"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.2.0",
+    "formatter": "~0.1.5",
+    "jquery.payment": "~1.2.2",
+    "normalize.css": "~3.0.2"
+  }
+}

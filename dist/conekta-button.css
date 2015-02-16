@@ -1,0 +1,162 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+.c-modal * {
+  box-sizing: border-box; }
+
+.c-modal {
+  display: block;
+  font-size: 62.5%;
+  overflow-x: auto;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1050;
+  padding-right: 25px;
+  padding-left: 25px;
+  outline: 0px none;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.4);
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif; }
+  .c-modal .c-modal-dialog {
+    position: relative;
+    width: 413px;
+    margin: 5% auto;
+    margin-top: 104px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); }
+    .c-modal .c-modal-dialog .c-modal-content .c-modal-header {
+      margin: 0 26px;
+      padding-top: 22px; }
+      .c-modal .c-modal-dialog .c-modal-content .c-modal-header h1 {
+        margin: 0;
+        font-size: 27px;
+        letter-spacing: .01em; }
+    .c-modal .c-modal-dialog .c-modal-content .c-modal-body {
+      margin: 0 26px; }
+    .c-modal .c-modal-dialog .c-modal-content .c-modal-footer {
+      padding: 20px 26px 13px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-color: #F9FAFB;
+      border-top: 1px solid #EEEEEE; }
+      .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button {
+        font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+        display: inline-block;
+        transition: all 0.15s ease-out 0s;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 1em;
+        padding: 1em;
+        text-align: center;
+        border: none;
+        box-shadow: none;
+        text-transform: uppercase; }
+        .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#paynow {
+          background-color: #6D48CC;
+          float: right; }
+          .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#paynow:hover {
+            background-color: #5531b0; }
+        .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#cancel {
+          background-color: #859093; }
+          .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#cancel:hover {
+            background-color: #6c7679; }
+
+.c-modal-body .card {
+  background: #F9FAFB;
+  border: solid 2px #E2E6E9;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 14px;
+  margin-bottom: 35px; }
+  .c-modal-body .card .info {
+    position: relative;
+    margin-bottom: 19px; }
+    .c-modal-body .card .info .tag {
+      font-size: 14px;
+      color: #FFF;
+      border-radius: 10px;
+      background-color: #838991;
+      display: inline-block;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 6px;
+      padding-right: 6px; }
+    .c-modal-body .card .info .brand-cards {
+      float: right;
+      display: inline-block;
+      margin-bottom: 15px;
+      margin-top: 5px; }
+      .c-modal-body .card .info .brand-cards > div {
+        display: inline-block;
+        padding-right: 5px;
+        padding-left: 5px; }
+  .c-modal-body .card .group {
+    display: inline-block;
+    position: relative;
+    min-height: 1px; }
+    .c-modal-body .card .group.number {
+      width: 188px;
+      margin-right: 4.5px; }
+    .c-modal-body .card .group.date {
+      width: 127px;
+      margin-left: 4.5px; }
+    .c-modal-body .card .group.name {
+      width: 240px;
+      margin-right: 4.5px; }
+    .c-modal-body .card .group.cvc {
+      width: 75px;
+      margin-left: 4.5px; }
+    .c-modal-body .card .group label {
+      font-size: 12px;
+      color: #838991; }
+    .c-modal-body .card .group input {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      height: 38px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 12px;
+      font-size: 14px;
+      font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+      width: 100%;
+      color: #262626;
+      border: solid 1px  #DADFE2;
+      border-radius: 4px; }
+      .c-modal-body .card .group input::focus {
+        border: solid 1px  #DADFE2;
+        outline: 0; }
+      .c-modal-body .card .group input::-webkit-input-placeholder {
+        color: #939C9F; }
+      .c-modal-body .card .group input::-moz-placeholder {
+        color: #939C9F; }
+      .c-modal-body .card .group input::-moz-placeholder {
+        color: #939C9F; }
+      .c-modal-body .card .group input:-ms-input-placeholder {
+        color: #939C9F; }
+
+.logo-visa {
+  width: 46px;
+  height: 14px;
+  background-size: 46px 14px;
+  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg); }
+
+.logo-mastercard {
+  width: 36px;
+  height: 21px;
+  background-size: 36px 21px;
+  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg); }
+
+.logo-amex {
+  width: 21px;
+  height: 21px;
+  background-size: 21px 21px;
+  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg); }
+
+
+
+/*# sourceMappingURL=conekta-button.css.map */
