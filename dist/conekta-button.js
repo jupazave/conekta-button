@@ -3,7 +3,8 @@ window.ConektaButton = function() {
   defaultParams = {
     amount: 0,
     name: "",
-    description: ""
+    description: "",
+    onSuccess: null
   };
   _helpers = {
     extend: function(a, b) {
@@ -69,10 +70,17 @@ window.ConektaButton = function() {
       window.console.error('Missing "Name" Attribute');
       return false;
     }
+    if (arguments[0].onSuccess != null) {
+      if (typeof arguments[0].onSuccess !== "function") {
+        window.console.error("Unexpected type of 'onSuccess'! Expected \"function\", got " + (typeof arguments[0].onSuccess));
+        return false;
+      }
+    }
     params.amount = arguments[0].amount;
     params.name = arguments[0].name;
     params.total = _helpers.numToStr(params.amount);
     params.description = arguments[0].description || defaultParams.description;
+    params.onSuccess = arguments[0].onSuccess || defaultParams.onSuccess;
     _helpers.openModal(params);
     cc_number = document.querySelector("[data-conekta-card-number]");
     cc_date = document.querySelector("[data-conekta-card-date]");
@@ -137,15 +145,20 @@ window.ConektaButton = function() {
           card: card
         };
         success = function(charge) {
+          console.log(charge);
           _helpers.removeModal();
-          return alert("Cargo Realizado");
+          if (!!params.onSuccess) {
+            params.onSuccess();
+          } else {
+            alert("Cargo Realizado");
+          }
         };
         error = function(response) {
           return alert("Error al realizar el cargo");
         };
         return Conekta.charge.create(charge, success, error);
       } else {
-
+        alert("Formulario con errores, verificar");
       }
     };
     document.querySelector("[data-conekta-card-submit]").addEventListener("click", makePayment, false);
