@@ -3,6 +3,7 @@ window.ConektaButton  = ->
         amount: 0
         name: ""
         description: ""
+        onSuccess: null
 
     _helpers =
         extend : (a, b) ->
@@ -111,7 +112,9 @@ window.ConektaButton  = ->
     if typeof arguments[0] != "object"
         window.console.error "Unexpected type of argument! Expected \"object\", got #{typeof arguments[0]}"
         return false
+
     else   
+
         params = _helpers.extend defaultParams, {}
 
         if !arguments[0].amount?
@@ -122,10 +125,16 @@ window.ConektaButton  = ->
             window.console.error 'Missing "Name" Attribute'
             return false
 
+        if arguments[0].onSuccess? 
+            if typeof arguments[0].onSuccess != "function"
+                window.console.error "Unexpected type of 'onSuccess'! Expected \"function\", got #{typeof arguments[0].onSuccess}"
+                return false
+
         params.amount = arguments[0].amount
         params.name = arguments[0].name
         params.total = _helpers.numToStr params.amount
         params.description = arguments[0].description || defaultParams.description
+        params.onSuccess = arguments[0].onSuccess || defaultParams.onSuccess
 
         _helpers.openModal params
 
@@ -205,8 +214,14 @@ window.ConektaButton  = ->
                     card: card
                 
                 success = (charge) ->
+                    console.log charge
                     _helpers.removeModal()
-                    alert "Cargo Realizado"
+                    if not not params.onSuccess
+                        params.onSuccess()
+                    else
+                        alert "Cargo Realizado"
+
+                    return
 
                 error = (response) ->
                     alert "Error al realizar el cargo"
@@ -215,6 +230,7 @@ window.ConektaButton  = ->
                 Conekta.charge.create charge, success, error
 
             else 
+                alert "Formulario con errores, verificar"
                 # To-Do: Animate
                 return
 
