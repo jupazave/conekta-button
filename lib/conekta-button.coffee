@@ -125,9 +125,10 @@ window.ConektaButton  = ->
             window.console.error 'Missing "Name" Attribute'
             return false
 
-        if arguments[0].onSuccess? && typeof arguments[0].onSuccess != "function"
-            window.console.error 'Missing "Name" Attribute'
-            return false
+        if arguments[0].onSuccess? 
+            if typeof arguments[0].onSuccess != "function"
+                window.console.error "Unexpected type of 'onSuccess'! Expected \"function\", got #{typeof arguments[0].onSuccess}"
+                return false
 
         params.amount = arguments[0].amount
         params.name = arguments[0].name
