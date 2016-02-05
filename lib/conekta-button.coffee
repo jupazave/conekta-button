@@ -3,12 +3,13 @@ window.ConektaButton  = ->
         amount: 0
         name: ""
         description: ""
-        onSuccess: null
+        onSuccess: ->
+            null
 
     _helpers =
         extend : (a, b) ->
-            for key in b 
-              if b.hasOwnProperty key 
+            for key in b
+              if b.hasOwnProperty key
                 a[key] = b[key]
             a
 
@@ -24,7 +25,7 @@ window.ConektaButton  = ->
             num = amount.toFixed().substring(amount.toFixed().length-2, 0)
             dec = amount.toFixed().substring(amount.toFixed().length-2)
             amount = "#{num}.#{dec}".replace(/\d(?=(\d{3})+\.)/g, '$&,')
-            return amount 
+            return amount
 
         openModal : (params) ->
             _form = """
@@ -33,18 +34,17 @@ window.ConektaButton  = ->
                         <div class="c-modal-content ">
                             <div class="c-modal-header">
                                 <h1>Pagar</h1>
+                                <img src="conekta-logo.png" alt="">
                             </div>
+                            
                             <form>
                                 <div class="c-modal-body">
+                                    <div class="message-field" style="display:none;"> </div>
                                     <div class="card">
                                         <div class="info">
                                             <div class="tag">Total: $ #{params.total}</div>
-                                            <div class="brand-cards">
-                                                <div class="logo-visa"></div>
-                                                <div class="logo-mastercard"></div>
-                                                <div class="logo-amex"></div>
-                                            </div>
                                         </div>
+                                        
                                         <div class="line">
                                             <div class="group number">
                                                 <label>Numero de la Tarjeta</label>
@@ -75,10 +75,11 @@ window.ConektaButton  = ->
                                     <div class="actions">
                                         <button type="button" class="control" id="cancel" data-conekta-card-cancel>Cancelar</button>
                                         <button type="button" class="control" id="paynow" data-conekta-card-submit>Pagar ahora</button>
+                                        <button style="display:none;" type="button" class="control" id="close" data-conekta-card-close>Cerrar</button>
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -92,28 +93,28 @@ window.ConektaButton  = ->
             return
 
 
-    window.document.onkeydown = (e) -> 
-        if !e 
-            e = event   
-        
+    window.document.onkeydown = (e) ->
+        if !e
+            e = event
+
         if e.keyCode == 27
             _helpers.removeModal()
             window.document.onkeydown = (e) ->
-                if !e 
-                    e = event 
+                if !e
+                    e = event
                 e
         return
 
 
     if arguments[0] == null
         window.console.error 'ConektaButton expects at least 1 attribute of type Object!'
-        return false 
-        
+        return false
+
     if typeof arguments[0] != "object"
         window.console.error "Unexpected type of argument! Expected \"object\", got #{typeof arguments[0]}"
         return false
 
-    else   
+    else
 
         params = _helpers.extend defaultParams, {}
 
@@ -125,7 +126,7 @@ window.ConektaButton  = ->
             window.console.error 'Missing "Name" Attribute'
             return false
 
-        if arguments[0].onSuccess? 
+        if arguments[0].onSuccess?
             if typeof arguments[0].onSuccess != "function"
                 window.console.error "Unexpected type of 'onSuccess'! Expected \"function\", got #{typeof arguments[0].onSuccess}"
                 return false
@@ -163,19 +164,22 @@ window.ConektaButton  = ->
         makePayment = (e) ->
             e.preventDefault()
             has_error= false
+            errors = new Array
             card = {}
             name = document.querySelector("[data-conekta-card-name]").value
 
             unless name
                 has_error = true
+                errors.push("El nombre en la tarjeta es necesario.")
             else
                 card.name = name
-            
+
 
             date = document.querySelector("[data-conekta-card-date]").value
 
             unless date
                 has_error = true
+                errors.push("La fecha de expiracion es necesaria.")
 
             else
                 date = date.split(" / ")
@@ -184,6 +188,7 @@ window.ConektaButton  = ->
 
                 unless Conekta.card.validateExpirationDate(month, year)
                     has_error = true
+                    errors.push("La fecha de expiración es invalida.")
 
                 else
                     card.exp_year = year
@@ -191,8 +196,9 @@ window.ConektaButton  = ->
 
             number = document.querySelector("[data-conekta-card-number]").value
 
-            unless Conekta.card.validateNumber(number) 
+            unless Conekta.card.validateNumber(number)
                 has_error = true
+                errors.push("El número de tu tarjeta es incorrecto.")
             else
                 card.number = number
 
@@ -201,6 +207,7 @@ window.ConektaButton  = ->
 
             unless Conekta.card.validateCVC(cvc)
                 has_error = true
+                errors.push("El CVC es incorrecto.")
             else
                 card.cvc = cvc
 
@@ -212,36 +219,70 @@ window.ConektaButton  = ->
                     currency: 'MXN'
                     description: params.description
                     card: card
-                
+
                 success = (charge) ->
-                    console.log charge
-                    _helpers.removeModal()
-                    if not not params.onSuccess
-                        params.onSuccess()
-                    else
-                        alert "Cargo Realizado"
+                    #_helpers.removeModal()
+
+                    card = document.querySelector(".c-modal .card")
+                    card.style.display = 'none'
+
+                    btn1 = document.querySelector("#cancel")
+                    btn1.style.display = 'none'
+
+                    btn2 = document.querySelector("#paynow")
+                    btn2.style.display = 'none'
+
+                    btn3 = document.querySelector("#close")
+                    btn3.style.display = ''
+
+                    ele = document.querySelector(".c-modal .message-field")
+                    ele.style.display = 'none'
+                    ele.classList.remove 'error'
+                    ele.classList.add 'success'
+                    ele.innerHTML = "<h2>¡Cargo exitoso!</h2>"
+                    ele.style.display = ''
+
+                    params.onSuccess()
+
 
                     return
 
                 error = (response) ->
-                    alert "Error al realizar el cargo"
-                    #To-Do: display error
+                    errors.push("")
+                    msg = "<ul><li> #{response.message_to_purchaser}</li></ul>"
+                    ele = document.querySelector(".c-modal .message-field")
+                    ele.style.display = 'none'
+                    ele.classList.remove 'success'
+                    ele.classList.add 'error'
+                    ele.innerHTML = msg
+                    ele.style.display = ''
 
                 Conekta.charge.create charge, success, error
 
-            else 
-                alert "Formulario con errores, verificar"
+            else
+                msg = "<ul>"
+                for error in errors
+                    do (error) ->
+                        msg += "<li> #{error}</li>"
+
+                msg += "</ul>"
+                ele = document.querySelector(".c-modal .message-field")
+                ele.style.display = 'none'
+                ele.classList.remove 'success'
+                ele.classList.add 'error'
+                ele.innerHTML = msg
+                ele.style.display = ''
                 # To-Do: Animate
                 return
 
 
         document.querySelector("[data-conekta-card-submit]").addEventListener "click", makePayment, false
         document.querySelector("[data-conekta-card-cancel]").addEventListener "click", cancelButton, false
+        document.querySelector("#close").addEventListener "click", cancelButton, false
 
 
         return this
 
-    
+
     params
 
-    
