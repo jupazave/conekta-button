@@ -1,0 +1,127 @@
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform:translateY(-100%);
+  }
+  5% {
+    -webkit-transform:translateY(-100%);
+  }
+  20% {
+    -webkit-transform:translateY(-80%);
+  }
+  30% {
+    -webkit-transform:translateY(-70%);
+  }
+  40% {
+    -webkit-transform:translateY(-60%);
+  }
+  50% {
+    -webkit-transform:translateY(-50%);
+  }
+  60% {
+    -webkit-transform:translateY(-30%);
+  }
+  70% {
+    -webkit-transform:translateY(-15%);
+  }
+  80% {
+    -webkit-transform:translateY(-10%);
+  }
+  90% {
+    -webkit-transform:translateY(-5%);
+  }
+  100% {
+    -webkit-transform:translateY(0);
+    padding: 10px;
+  }
+}
+
+/* Mozilla Firefox 15 below */
+@-moz-keyframes bounce {
+  0% {
+  -moz-transform:translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    -moz-transform:translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    -moz-transform:translateY(-50%);
+  }
+  50% {
+    -moz-transform:translateY(-30%);
+  }
+  80% {
+    -moz-transform:translateY(-15%);
+  }
+  95% {
+    -moz-transform:translateY(-10%);
+  }
+  100% {
+    -moz-transform:translateY(0);
+    padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+
+/* Opera 12.0 */
+@-o-keyframes bounce {
+  0% {
+  -o-transform:translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    -o-transform:translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    -o-transform:translateY(-50%);
+  }
+  50% {
+    -o-transform:translateY(-30%);
+  }
+  80% {
+    -o-transform:translateY(-15%);
+  }
+  95% {
+    -o-transform:translateY(-10%);
+  }
+  99% {
+    -o-transform:translateY(-5%);
+  }
+  100% {
+    -o-transform:translateY(0);
+    padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+
+/* W3, Opera 12+, Firefox 16+ */
+@keyframes bounce {
+  0% {
+  transform:translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    transform:translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    transform:translateY(-50%);
+  }
+  50% {
+    transform:translateY(-30%);
+  }
+  80% {
+    transform:translateY(-15%);
+  }
+  95% {
+    transform:translateY(-7%);
+  }
+  100% {
+    transform:translateY(0);
+    padding-bottom: 9px;
+    opacity: 1;
+  }
+}

@@ -38,7 +38,7 @@ gulp.task('watch', function () {
   gulp.watch('lib/conekta-button.coffee', ['coffee']);
 });
 
-gulp.task('setup', ['watch', 'webserver']);
+gulp.task('setup', ['watch', 'webserver', 'styles', 'coffee']);
 
 gulp.task('default', ['clean'], function () {
   gulp.start('setup');
