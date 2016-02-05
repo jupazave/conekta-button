@@ -19,35 +19,59 @@
   opacity: 1;
   background: rgba(0, 0, 0, 0.4);
   font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif; }
+  .c-modal .message-field {
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 14px;
+    margin-bottom: 35px;
+    font-size: 16px;
+    -webkit-animation: bounce 800ms ease-out;
+    animation: bounce 800ms ease-out; }
+    .c-modal .message-field h2 {
+      text-align: center; }
+    .c-modal .message-field.error {
+      background: #F7D8D8;
+      border: solid 2px #FB9F9F; }
+    .c-modal .message-field.success {
+      background: #D7F9D9;
+      border: solid 2px #11861A; }
   .c-modal .c-modal-dialog {
     position: relative;
     width: 413px;
     margin: 5% auto;
     margin-top: 104px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 4px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); }
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    -webkit-animation: bounce 800ms ease-out;
+    animation: bounce 800ms ease-out; }
     .c-modal .c-modal-dialog .c-modal-content .c-modal-header {
       margin: 0 26px;
-      padding-top: 22px; }
+      padding-top: 22px;
+      color: #404757;
+      text-align: center; }
+      .c-modal .c-modal-dialog .c-modal-content .c-modal-header img {
+        max-height: 26px;
+        margin-top: 8px; }
       .c-modal .c-modal-dialog .c-modal-content .c-modal-header h1 {
         margin: 0;
         font-size: 27px;
-        letter-spacing: .01em; }
+        letter-spacing: .01em;
+        text-align: center; }
     .c-modal .c-modal-dialog .c-modal-content .c-modal-body {
       margin: 0 26px; }
     .c-modal .c-modal-dialog .c-modal-content .c-modal-footer {
       padding: 20px 26px 13px;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
-      background-color: #F9FAFB;
-      border-top: 1px solid #EEEEEE; }
+      background-color: #f9fafb;
+      border-top: 1px solid #eeeeee; }
       .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button {
         font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
         display: inline-block;
         transition: all 0.15s ease-out 0s;
         border-radius: 6px;
-        color: white;
+        color: #ffffff;
         font-weight: bold;
         letter-spacing: 1px;
         margin-bottom: 1em;
@@ -55,9 +79,10 @@
         text-align: center;
         border: none;
         box-shadow: none;
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        cursor: pointer; }
         .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#paynow {
-          background-color: #6D48CC;
+          background-color: #6d48cc;
           float: right; }
           .c-modal .c-modal-dialog .c-modal-content .c-modal-footer button#paynow:hover {
             background-color: #5531b0; }
@@ -67,8 +92,8 @@
             background-color: #6c7679; }
 
 .c-modal-body .card {
-  background: #F9FAFB;
-  border: solid 2px #E2E6E9;
+  background: #f9fafb;
+  border: solid 2px #e2e6e9;
   padding: 15px;
   border-radius: 4px;
   margin-top: 14px;
@@ -78,7 +103,7 @@
     padding-bottom: 20px; }
     .c-modal-body .card .info .tag {
       font-size: 14px;
-      color: #FFF;
+      color: #ffffff;
       border-radius: 10px;
       background-color: #838991;
       display: inline-block;
@@ -125,37 +150,73 @@
       font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
       width: 100%;
       color: #262626;
-      border: solid 1px  #DADFE2;
+      border: solid 1px  #dadfe2;
       border-radius: 4px; }
       .c-modal-body .card .group input::focus {
-        border: solid 1px  #DADFE2;
+        border: solid 1px  #dadfe2;
         outline: 0; }
       .c-modal-body .card .group input::-webkit-input-placeholder {
-        color: #939C9F; }
+        color: #939c9f; }
       .c-modal-body .card .group input::-moz-placeholder {
-        color: #939C9F; }
+        color: #939c9f; }
       .c-modal-body .card .group input::-moz-placeholder {
-        color: #939C9F; }
+        color: #939c9f; }
       .c-modal-body .card .group input:-ms-input-placeholder {
-        color: #939C9F; }
+        color: #939c9f; }
 
-.logo-visa {
-  width: 46px;
-  height: 14px;
-  background-size: 46px 14px;
-  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/visa.svg); }
-
-.logo-mastercard {
-  width: 36px;
-  height: 21px;
-  background-size: 36px 21px;
-  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/mastercard.svg); }
-
-.logo-amex {
-  width: 21px;
-  height: 21px;
-  background-size: 21px 21px;
-  background-image: url(https://d33i624pw6jj68.cloudfront.net/static/img/logos/amex.svg); }
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(-100%); }
+  5% {
+    -webkit-transform: translateY(-100%); }
+  20% {
+    -webkit-transform: translateY(-80%); }
+  30% {
+    -webkit-transform: translateY(-70%); }
+  40% {
+    -webkit-transform: translateY(-60%); }
+  50% {
+    -webkit-transform: translateY(-50%); }
+  60% {
+    -webkit-transform: translateY(-30%); }
+  70% {
+    -webkit-transform: translateY(-15%); }
+  80% {
+    -webkit-transform: translateY(-10%); }
+  90% {
+    -webkit-transform: translateY(-5%); }
+  100% {
+    -webkit-transform: translateY(0);
+    padding: 10px; } }
+/* Mozilla Firefox 15 below */
+/* Opera 12.0 */
+/* W3, Opera 12+, Firefox 16+ */
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0; }
+  5% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0; }
+  30% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  50% {
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%); }
+  80% {
+    -webkit-transform: translateY(-15%);
+            transform: translateY(-15%); }
+  95% {
+    -webkit-transform: translateY(-7%);
+            transform: translateY(-7%); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    padding-bottom: 9px;
+    opacity: 1; } }
 
 
 
