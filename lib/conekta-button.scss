@@ -75,6 +75,14 @@ $font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
             .#{$modal_name}-header{
                 margin: 0 26px;
                 padding-top: 22px;
+                color: #404757;
+
+                text-align: center;
+
+                img{
+                    max-height: 26px;
+                    margin-top: 8px;
+                }
 
                 h1{
                     margin: 0;
