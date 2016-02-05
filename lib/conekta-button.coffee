@@ -34,6 +34,7 @@ window.ConektaButton  = ->
                         <div class="c-modal-content ">
                             <div class="c-modal-header">
                                 <h1>Pagar</h1>
+                                <img src="conekta-logo.png" alt="">
                             </div>
                             
                             <form>
